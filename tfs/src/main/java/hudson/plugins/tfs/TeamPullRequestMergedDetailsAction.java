@@ -81,6 +81,11 @@ public class TeamPullRequestMergedDetailsAction implements Action, Serializable 
     }
 
     @Exported
+    public String getSourceBranch() {
+        return sourceBranch;
+    }
+
+    @Exported
     public String getDetailedMessage() {
         return detailedMessage;
     }
