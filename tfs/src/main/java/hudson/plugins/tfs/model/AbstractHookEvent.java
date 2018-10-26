@@ -122,10 +122,10 @@ public abstract class AbstractHookEvent {
                 values.add(new StringParameterValue("BRANCHNAME", "TestRemotePRBranchName"));
 
                 final String vstsRefspec = getVstsRefspec(gitCodePushedEventArgs);
-                values.add(new StringParameterValue("vstsRefspec", vstsRefspec));
-                values.add(new StringParameterValue("vstsBranchOrCommit", gitCodePushedEventArgs.commit));
+                // values.add(new StringParameterValue("vstsRefspec", vstsRefspec));
+                // values.add(new StringParameterValue("vstsBranchOrCommit", gitCodePushedEventArgs.commit));
                 SafeParametersAction paraAction = new SafeParametersAction(values);
-                final Action[] actionsNew = ActionHelper.create(actions, paraAction);
+                final Action[] actionsNew = ActionHelper.create(new ArrayList<Action>(), paraAction);
                 final List<Action> actionsWithSafeParams = new ArrayList<Action>(Arrays.asList(actionsNew));
 
                 final TeamPluginGlobalConfig config = TeamPluginGlobalConfig.get();
