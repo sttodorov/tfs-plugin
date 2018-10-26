@@ -165,7 +165,8 @@ public class TeamPushTrigger extends Trigger<Job<?, ?>> {
                 }
                 final int quietPeriod = p.getQuietPeriod();
                 final CauseAction causeAction = new CauseAction(cause);
-                final Action[] actionArray = ActionHelper.create(actions, causeAction);
+                final parameterActionTest = new ParametersAction(new StringParameterValue("BRANCHNAMETEST", "branchNameTest");
+                final Action[] actionArray = ActionHelper.create(actions, parameterActionTest);
                 final QueueTaskFuture<?> queueTaskFuture = p.scheduleBuild2(quietPeriod, actionArray);
                 if (queueTaskFuture != null) {
                     LOGGER.info(changesDetected + "Triggering " + name);
