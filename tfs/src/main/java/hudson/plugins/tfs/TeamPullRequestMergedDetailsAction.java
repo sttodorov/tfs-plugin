@@ -29,6 +29,7 @@ public class TeamPullRequestMergedDetailsAction implements Action, Serializable 
     public String message;
     public String detailedMessage;
     public String collectionUri;
+    public String sourceBranch;
 
     public TeamPullRequestMergedDetailsAction() {
 
@@ -39,6 +40,11 @@ public class TeamPullRequestMergedDetailsAction implements Action, Serializable 
         this.message = message;
         this.detailedMessage = detailedMessage;
         this.collectionUri = collectionUri;
+    }
+
+    public TeamPullRequestMergedDetailsAction(final GitPullRequestEx gitPullRequest, final String message, final String detailedMessage, final String collectionUri, final String sourceBranch) {
+        this(gitPullRequest,message,detailedMessage,collectionUri);
+        this.sourceBranch = sourceBranch;    
     }
 
     public static URI addWorkItemsForRun(final Run<?, ?> run, final List<ResourceRef> destination) {

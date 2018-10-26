@@ -142,7 +142,7 @@ public class BuildCommand extends AbstractCommand {
                 actions.add(action);
                 final String message = event.getMessage().getText();
                 final String detailedMessage = event.getDetailedMessage().getText();
-                final Action teamPullRequestMergedDetailsAction = new TeamPullRequestMergedDetailsAction(gitPullRequest, message, detailedMessage, args.collectionUri.toString());
+                final Action teamPullRequestMergedDetailsAction = new TeamPullRequestMergedDetailsAction(gitPullRequest, message, detailedMessage, args.collectionUri.toString(), args.sourceBranch);
                 actions.add(teamPullRequestMergedDetailsAction);
                 TeamGlobalStatusAction.addIfApplicable(actions);
             }
