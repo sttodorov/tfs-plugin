@@ -5,6 +5,7 @@ import hudson.Util;
 import hudson.console.AnnotatedLargeText;
 import hudson.model.Action;
 import hudson.model.ParametersAction;
+import hudson.model.StringParameterValue;
 import hudson.model.Item;
 import hudson.model.Job;
 import hudson.model.queue.QueueTaskFuture;
