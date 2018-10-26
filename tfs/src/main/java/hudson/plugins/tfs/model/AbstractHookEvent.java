@@ -116,8 +116,11 @@ public abstract class AbstractHookEvent {
                 final int quietPeriod = scmTriggerItem.getQuietPeriod();
                 final String targetUrl = job.getAbsoluteUrl() + job.getNextBuildNumber();
 
-                final ArrayList<ParameterValue> values = getDefaultParameters(job);
-                values.set(0, gitCodePushedEventArgs.sourceBranch);
+                // final ArrayList<ParameterValue> values = getDefaultParameters(job);
+                // values.set(0, gitCodePushedEventArgs.sourceBranch);
+                final ArrayList<ParameterValue> values = new ArrayList<ParameterValue>();
+                values.add(new StringParameterValue("BRANCHNAME", gitCodePushedEventArgs.sourceBranch));
+
                 final String vstsRefspec = getVstsRefspec(gitCodePushedEventArgs);
                 values.add(new StringParameterValue("vstsRefspec", vstsRefspec));
                 values.add(new StringParameterValue("vstsBranchOrCommit", gitCodePushedEventArgs.commit));
