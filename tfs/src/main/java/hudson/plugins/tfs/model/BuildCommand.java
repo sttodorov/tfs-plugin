@@ -73,7 +73,7 @@ public class BuildCommand extends AbstractCommand {
         @Override
         public String getSampleRequestPayload() {
             final Class<? extends Factory> me = this.getClass();
-            final InputStream stream = me.getResourceAsStream("BuildCommand.json");
+            final InputStream stream = me.getResourceAsStream("BuildWithParametersCommand.json");
             try {
                 return IOUtils.toString(stream, MediaType.UTF_8);
             }
@@ -139,7 +139,7 @@ public class BuildCommand extends AbstractCommand {
                 paramBranch.name = "BRANCHNAME";
                 paramBranch.value = args.sourceBranch;
                 teamBuildPayload.BuildParameters.add(paramBranch);
-                
+
                 // record the values for the special optional parameters
                 commitId = args.commit;
                 pullRequestId = Integer.toString(args.pullRequestId, 10);
