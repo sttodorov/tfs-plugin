@@ -303,6 +303,11 @@ public class TeamBuildEndpoint implements UnprotectedRootAction {
         final JSONObject formData = req.getSubmittedForm();
         final ObjectMapper mapper = EndpointHelper.MAPPER;
         final TeamBuildPayload teamBuildPayload = mapper.convertValue(formData, TeamBuildPayload.class);
+        
+        BuildParameter paramBranch = new BuildParameter();
+        paramBranch.name = "BRANCHNAME";
+        paramBranch.value = args.sourceBranch;
+        teamBuildPayload.BuildParameters.add(paramBranch);
 
         final BuildableItem buildable = (BuildableItem) job;
         response = command.perform(job, buildable, req, formData, mapper, teamBuildPayload, actualDelay);
@@ -329,7 +334,7 @@ public class TeamBuildEndpoint implements UnprotectedRootAction {
             @QueryParameter final TimeDuration delay
     ) throws IOException {
         // Send telemetry
-        TelemetryHelper.sendEvent("team-build", new TelemetryHelper.PropertyMapBuilder()
+        TelemetryHelper.sendEvent("team-build-parameters", new TelemetryHelper.PropertyMapBuilder()
                 .build());
 
         dispatch(request, response, delay);

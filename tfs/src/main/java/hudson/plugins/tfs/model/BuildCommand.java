@@ -117,10 +117,6 @@ public class BuildCommand extends AbstractCommand {
         String pullRequestId = null;
 
         final List<Action> actions = new ArrayList<Action>();
-        final BuildParameter paramBranch = new BuildParameter();
-        paramBranch.name = "BRANCHNAME";
-        paramBranch.value = "TestTestTest";
-        teamBuildPayload.BuildParameters.add(paramBranch);
         if (teamBuildPayload.BuildVariables != null) {
             contributeTeamBuildParameterActions(teamBuildPayload.BuildVariables, actions);
         }
@@ -138,6 +134,7 @@ public class BuildCommand extends AbstractCommand {
             else if ("git.pullrequest.merged".equals(eventType)) {
                 final GitPullRequestEx gitPullRequest = mapper.convertValue(resource, GitPullRequestEx.class);
                 final PullRequestMergeCommitCreatedEventArgs args = GitPullRequestMergedEvent.decodeGitPullRequest(gitPullRequest, event);
+                
                 // record the values for the special optional parameters
                 commitId = args.commit;
                 pullRequestId = Integer.toString(args.pullRequestId, 10);
