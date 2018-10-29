@@ -117,7 +117,10 @@ public class BuildCommand extends AbstractCommand {
         String pullRequestId = null;
 
         final List<Action> actions = new ArrayList<Action>();
-
+        final BuildParameter paramBranch = new BuildParameter();
+        paramBranch.name = "BRANCHNAME";
+        paramBranch.value = "TestTestTest";
+        teamBuildPayload.BuildParameters.Add(paramBranch);
         if (teamBuildPayload.BuildVariables != null) {
             contributeTeamBuildParameterActions(teamBuildPayload.BuildVariables, actions);
         }
