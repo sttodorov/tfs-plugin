@@ -330,7 +330,7 @@ public class TeamBuildEndpoint implements UnprotectedRootAction {
     ) throws IOException {
         // Send telemetry
         final Map<String, String> propsMap = new TelemetryHelper.PropertyMapBuilder().build();
-        propsMap.add("BRANCHNAME", "56785678");
+        propsMap.put("BRANCHNAME", "56785678");
         TelemetryHelper.sendEvent("team-build-parameters",propsMap);
 
         dispatch(request, response, delay);
@@ -346,7 +346,7 @@ public class TeamBuildEndpoint implements UnprotectedRootAction {
     ) throws IOException {
         // Send telemetry
         final Map<String, String> propsMap = new TelemetryHelper.PropertyMapBuilder().build();
-        propsMap.add("BRANCHNAME", "12341234");
+        propsMap.put("BRANCHNAME", "12341234");
         TelemetryHelper.sendEvent("team-build-parameters",propsMap);
 
         dispatch(request, response, delay);
