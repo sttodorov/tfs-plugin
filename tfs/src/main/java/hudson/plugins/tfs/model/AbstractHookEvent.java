@@ -120,6 +120,7 @@ public abstract class AbstractHookEvent {
                 // values.set(0, gitCodePushedEventArgs.sourceBranch);
                 final ArrayList<ParameterValue> values = new ArrayList<ParameterValue>();
                 values.add(new StringParameterValue("BRANCHNAME", "TestRemotePRBranchName"));
+                values.add(new StringParameterValue("BRANCHNAMETEST", "TestRemotePRBranchNameTEST"));
 
                 final String vstsRefspec = getVstsRefspec(gitCodePushedEventArgs);
                 // values.add(new StringParameterValue("vstsRefspec", vstsRefspec));

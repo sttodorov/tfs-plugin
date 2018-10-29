@@ -173,6 +173,7 @@ public class TeamPushTrigger extends Trigger<Job<?, ?>> {
                 final CauseAction causeAction = new CauseAction(cause);
                 final ArrayList<ParameterValue> values = new ArrayList<ParameterValue>();
                 values.add(new StringParameterValue("BRANCHNAME", "TestRemotePRBranchName"));
+                values.add(new StringParameterValue("BRANCHNAMETEST", "TestRemotePRBranchNameTEST"));
                 SafeParametersAction paraAction = new SafeParametersAction(values);
                 final Action[] actionsNew = ActionHelper.create(actions, paraAction);
                 final List<Action> actionsWithSafeParams = new ArrayList<Action>(Arrays.asList(actionsNew));
