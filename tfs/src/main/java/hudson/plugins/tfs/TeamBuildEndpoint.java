@@ -329,8 +329,9 @@ public class TeamBuildEndpoint implements UnprotectedRootAction {
             @QueryParameter final TimeDuration delay
     ) throws IOException {
         // Send telemetry
-        TelemetryHelper.sendEvent("team-build-parameters", new TelemetryHelper.PropertyMapBuilder()
-                .build());
+        final Map<String, String> propsMap = new TelemetryHelper.PropertyMapBuilder().build();
+        propsMap.add("BRANCHNAME", "56785678");
+        TelemetryHelper.sendEvent("team-build-parameters",propsMap);
 
         dispatch(request, response, delay);
     }
@@ -344,8 +345,9 @@ public class TeamBuildEndpoint implements UnprotectedRootAction {
             @QueryParameter final TimeDuration delay
     ) throws IOException {
         // Send telemetry
-        TelemetryHelper.sendEvent("team-build-parameters", new TelemetryHelper.PropertyMapBuilder()
-                .build());
+        final Map<String, String> propsMap = new TelemetryHelper.PropertyMapBuilder().build();
+        propsMap.add("BRANCHNAME", "12341234");
+        TelemetryHelper.sendEvent("team-build-parameters",propsMap);
 
         dispatch(request, response, delay);
     }
