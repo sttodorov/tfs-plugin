@@ -120,7 +120,7 @@ public class BuildCommand extends AbstractCommand {
         final BuildParameter paramBranch = new BuildParameter();
         paramBranch.name = "BRANCHNAME";
         paramBranch.value = "TestTestTest";
-        teamBuildPayload.BuildParameters.Add(paramBranch);
+        teamBuildPayload.BuildParameters.add(paramBranch);
         if (teamBuildPayload.BuildVariables != null) {
             contributeTeamBuildParameterActions(teamBuildPayload.BuildVariables, actions);
         }
