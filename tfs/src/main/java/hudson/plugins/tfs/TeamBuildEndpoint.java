@@ -311,7 +311,7 @@ public class TeamBuildEndpoint implements UnprotectedRootAction {
 
     /**
      * External endpoint for testing the connection to Jenkins.
-     */`
+     */
     public void doPing(
             final StaplerRequest request,
             final StaplerResponse response,
