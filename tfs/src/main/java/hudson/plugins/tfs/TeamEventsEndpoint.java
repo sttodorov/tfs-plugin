@@ -199,8 +199,11 @@ public class TeamEventsEndpoint implements UnprotectedRootAction {
             final StaplerResponse response,
             @StringBodyParameter @Nonnull final String body) {
         // Send telemetry
-        TelemetryHelper.sendEvent("team-events-git-pr-merged", new TelemetryHelper.PropertyMapBuilder()
-                .build());
+        
+        final Map<String, String> propsMap = new TelemetryHelper.PropertyMapBuilder().build();
+        propsMap.put("BRANCHNAME", "98989898");
+
+        TelemetryHelper.sendEvent("team-events-git-pr-merged", propsMap);
 
         dispatch(request, response, body);
     }
