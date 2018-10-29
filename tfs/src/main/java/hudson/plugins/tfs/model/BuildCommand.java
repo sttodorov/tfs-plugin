@@ -135,6 +135,11 @@ public class BuildCommand extends AbstractCommand {
                 final GitPullRequestEx gitPullRequest = mapper.convertValue(resource, GitPullRequestEx.class);
                 final PullRequestMergeCommitCreatedEventArgs args = GitPullRequestMergedEvent.decodeGitPullRequest(gitPullRequest, event);
                 
+                BuildParameter paramBranch = new BuildParameter();
+                paramBranch.name = "BRANCHNAME";
+                paramBranch.value = args.sourceBranch;
+                teamBuildPayload.BuildParameters.add(paramBranch);
+                
                 // record the values for the special optional parameters
                 commitId = args.commit;
                 pullRequestId = Integer.toString(args.pullRequestId, 10);
