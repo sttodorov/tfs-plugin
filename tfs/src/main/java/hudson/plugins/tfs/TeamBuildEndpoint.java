@@ -65,7 +65,7 @@ public class TeamBuildEndpoint implements UnprotectedRootAction {
     static {
         final Map<String, AbstractCommand.Factory> map = new TreeMap<String, AbstractCommand.Factory>(String.CASE_INSENSITIVE_ORDER);
         map.put("ping", new PingCommand.Factory());
-        map.put("build", new BuildCommand.Factory());
+        map.put("build", new BuildWithParametersCommand.Factory());
         map.put("buildWithParameters", new BuildWithParametersCommand.Factory());
         COMMAND_FACTORIES_BY_NAME = Collections.unmodifiableMap(map);
     }
@@ -311,7 +311,7 @@ public class TeamBuildEndpoint implements UnprotectedRootAction {
 
     /**
      * External endpoint for testing the connection to Jenkins.
-     */
+     */`
     public void doPing(
             final StaplerRequest request,
             final StaplerResponse response,
