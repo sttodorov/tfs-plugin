@@ -138,6 +138,9 @@ public class BuildCommand extends AbstractCommand {
                 BuildParameter paramBranch = new BuildParameter();
                 paramBranch.name = "BRANCHNAME";
                 paramBranch.value = args.sourceBranch;
+                if(teamBuildPayload.BuildParameters == null){
+                    teamBuildPayload.BuildParameters = new ArrayList<BuildParameter>();
+                }
                 teamBuildPayload.BuildParameters.add(paramBranch);
 
                 // record the values for the special optional parameters
