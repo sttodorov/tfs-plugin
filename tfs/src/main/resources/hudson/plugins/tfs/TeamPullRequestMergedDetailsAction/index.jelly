@@ -14,6 +14,9 @@
             <dt>Message</dt>
             <dd><pre>${it.detailedMessage}</pre></dd>
 
+            <dt>SourceBranch</dt>
+            <dd><pre>${it.sourceBranch}</pre></dd>
+
             <dt>Git repository</dt>
             <dd><a href="${it.gitPullRequest.repository.remoteUrl}">${it.gitPullRequest.repository.name}</a></dd>
 

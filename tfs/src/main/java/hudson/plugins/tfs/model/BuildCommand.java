@@ -117,6 +117,7 @@ public class BuildCommand extends AbstractCommand {
         String pullRequestId = null;
 
         final List<Action> actions = new ArrayList<Action>();
+        String sourceBranch = "";
 
         if (teamBuildPayload.BuildVariables != null) {
             contributeTeamBuildParameterActions(teamBuildPayload.BuildVariables, actions);
@@ -138,11 +139,15 @@ public class BuildCommand extends AbstractCommand {
                 // record the values for the special optional parameters
                 commitId = args.commit;
                 pullRequestId = Integer.toString(args.pullRequestId, 10);
+                sourceBranch = args.sourceBranch;
+
                 final Action action = new PullRequestParameterAction(args);
                 actions.add(action);
                 final String message = event.getMessage().getText();
                 final String detailedMessage = event.getDetailedMessage().getText();
-                final Action teamPullRequestMergedDetailsAction = new TeamPullRequestMergedDetailsAction(gitPullRequest, message, detailedMessage, args.collectionUri.toString());
+                final Action teamPullRequestMergedDetailsAction = new TeamPullRequestMergedDetailsAction(gitPullRequest,
+                message, detailedMessage, args.collectionUri.toString(), args.sourceBranch);
+
                 actions.add(teamPullRequestMergedDetailsAction);
                 TeamGlobalStatusAction.addIfApplicable(actions);
             }
@@ -176,6 +181,10 @@ public class BuildCommand extends AbstractCommand {
                     parameterValue = spd.createValue(pullRequestId);
                     // erase value to avoid adding it a second time
                     pullRequestId = null;
+                }
+                else if (name.equals("BRANCHNAME") && d instanceof SimpleParameterDefinition) {
+                    final SimpleParameterDefinition spd = (SimpleParameterDefinition) d;
+                    parameterValue = spd.createValue(sourceBranch);
                 }
                 else {
                     parameterValue = d.createValue(req, jo);
