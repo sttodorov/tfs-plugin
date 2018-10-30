@@ -145,9 +145,13 @@ public class BuildCommand extends AbstractCommand {
                 
 
                 LOGGER.log(Level.INFO, String.format("111111111111111BuildCommand PayloadBuildParameters size is '%d' size.", teamBuildPayload.BuildParameters.size()));
-                teamBuildPayload.BuildParameters.add(paramBranch);
-                LOGGER.log(Level.INFO, String.format("111111111111111 ADDED BuildCommand PayloadBuildParameters size is '%d' size.", teamBuildPayload.BuildParameters.size()));
+                // teamBuildPayload.BuildParameters.add(paramBranch);
+                // LOGGER.log(Level.INFO, String.format("111111111111111 ADDED BuildCommand PayloadBuildParameters size is '%d' size.", teamBuildPayload.BuildParameters.size()));
 
+                for (BuildParameter bp: teamBuildPayload.BuildParameters) {
+                    LOGGER.log(Level.INFO, String.format("111111111111111 NAME '%s' VALUE '%s'", bp.name, bp.value));
+                }
+                teamBuildPayload.BuildParameters.set(0,paramBranch);
                 for (BuildParameter bp: teamBuildPayload.BuildParameters) {
                     LOGGER.log(Level.INFO, String.format("111111111111111 NAME '%s' VALUE '%s'", bp.name, bp.value));
                 }
