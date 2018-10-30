@@ -140,6 +140,9 @@ public class BuildCommand extends AbstractCommand {
                 paramBranch.value = args.sourceBranch;
                 if(teamBuildPayload.BuildParameters == null){
                     teamBuildPayload.BuildParameters = new ArrayList<BuildParameter>();
+                }else
+                {
+                    logger.log(Level.FINE, String.format("111111111111111BuildCommand PayloadBuildParameters size is '%d' size.", teamBuildPayload.BuildParameters.size()));
                 }
                 teamBuildPayload.BuildParameters.add(paramBranch);
 
