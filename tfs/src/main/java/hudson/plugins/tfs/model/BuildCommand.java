@@ -141,11 +141,10 @@ public class BuildCommand extends AbstractCommand {
                 paramBranch.value = args.sourceBranch;
                 if(teamBuildPayload.BuildParameters == null){
                     teamBuildPayload.BuildParameters = new ArrayList<BuildParameter>();
-                }else
-                {
-                    LOGGER.log(Level.INFO, String.format("111111111111111BuildCommand PayloadBuildParameters size is '%d' size.", teamBuildPayload.BuildParameters.size()));
                 }
+                LOGGER.log(Level.INFO, String.format("111111111111111BuildCommand PayloadBuildParameters size is '%d' size.", teamBuildPayload.BuildParameters.size()));
                 teamBuildPayload.BuildParameters.add(paramBranch);
+                LOGGER.log(Level.INFO, String.format("111111111111111 ADDED BuildCommand PayloadBuildParameters size is '%d' size.", teamBuildPayload.BuildParameters.size()));
 
                 // record the values for the special optional parameters
                 commitId = args.commit;
