@@ -214,8 +214,11 @@ public class TeamEventsEndpoint implements UnprotectedRootAction {
             final StaplerResponse response,
             @StringBodyParameter @Nonnull final String body) {
         // Send telemetry
-        TelemetryHelper.sendEvent("team-events-git-push", new TelemetryHelper.PropertyMapBuilder()
-                .build());
+        
+        final Map<String, String> propsMap = new TelemetryHelper.PropertyMapBuilder().build();
+        propsMap.put("BRANCHNAME", "12121212");
+
+        TelemetryHelper.sendEvent("team-events-git-push", propsMap);
         dispatch(request, response, body);
     }
 
@@ -236,7 +239,9 @@ public class TeamEventsEndpoint implements UnprotectedRootAction {
             final StaplerResponse response,
             @StringBodyParameter @Nonnull final String body) {
         // Send telemetry
-        TelemetryHelper.sendEvent("team-events-rmwebhook", new TelemetryHelper.PropertyMapBuilder().build());
+        final Map<String, String> propsMap = new TelemetryHelper.PropertyMapBuilder().build();
+        propsMap.put("BRANCHNAME", "34343434");
+        TelemetryHelper.sendEvent("team-events-rmwebhook", propsMap);
         dispatch(request, response, body);
     }
 
