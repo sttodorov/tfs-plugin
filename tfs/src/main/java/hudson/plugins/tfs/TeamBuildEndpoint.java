@@ -331,7 +331,7 @@ public class TeamBuildEndpoint implements UnprotectedRootAction {
         // Send telemetry
         final Map<String, String> propsMap = new TelemetryHelper.PropertyMapBuilder().build();
 
-        LOGGER.log(Level.FINE, String.format("111111111111111In Build propsMap has'%d' size.", propsMap.size()));
+        LOGGER.log(Level.INFO, String.format("111111111111111In Build propsMap has'%d' size.", propsMap.size()));
         
         propsMap.put("BRANCHNAME", "56785678");
         TelemetryHelper.sendEvent("team-build-parameters",propsMap);
@@ -351,7 +351,7 @@ public class TeamBuildEndpoint implements UnprotectedRootAction {
 
         final Map<String, String> propsMap = new TelemetryHelper.PropertyMapBuilder().build();
 
-        LOGGER.log(Level.FINE, String.format("111111111111111In Build with parameters propsMap has'%d' size.", propsMap.size()));
+        LOGGER.log(Level.INFO, String.format("111111111111111In Build with parameters propsMap has'%d' size.", propsMap.size()));
 
         propsMap.put("BRANCHNAME", "12341234");
         TelemetryHelper.sendEvent("team-build-parameters",propsMap);
