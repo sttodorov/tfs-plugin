@@ -118,6 +118,7 @@ public class BuildCommand extends AbstractCommand {
         String pullRequestId = null;
 
         final List<Action> actions = new ArrayList<Action>();
+        final String sourceBranch = "";
         if (teamBuildPayload.BuildVariables != null) {
             contributeTeamBuildParameterActions(teamBuildPayload.BuildVariables, actions);
         }
@@ -139,6 +140,7 @@ public class BuildCommand extends AbstractCommand {
                 BuildParameter paramBranch = new BuildParameter();
                 paramBranch.name = "BRANCHNAME";
                 paramBranch.value = args.sourceBranch;
+                sourceBranch = args.sourceBranch;
                 if(teamBuildPayload.BuildParameters == null){
                     teamBuildPayload.BuildParameters = new ArrayList<BuildParameter>();
                 }
@@ -153,7 +155,7 @@ public class BuildCommand extends AbstractCommand {
                 }
                 teamBuildPayload.BuildParameters.set(0,paramBranch);
                 for (BuildParameter bp: teamBuildPayload.BuildParameters) {
-                    LOGGER.log(Level.INFO, String.format("111111111111111 NAME '%s' VALUE '%s'", bp.name, bp.value));
+                    LOGGER.log(Level.INFO, String.format("2222222222 NAME '%s' VALUE '%s'", bp.name, bp.value));
                 }
 
                 // record the values for the special optional parameters
@@ -180,6 +182,8 @@ public class BuildCommand extends AbstractCommand {
                 final String name = jo.getString("name");
                 parameterNames.add(name);
 
+                LOGGER.log(Level.INFO, String.format("3333333 CHECKING PARAM '%s'.", name));
+
                 final ParameterDefinition d = pp.getParameterDefinition(name);
                 if (d == null)
                     throw new IllegalArgumentException("No such parameter definition: " + name);
@@ -197,6 +201,12 @@ public class BuildCommand extends AbstractCommand {
                     parameterValue = spd.createValue(pullRequestId);
                     // erase value to avoid adding it a second time
                     pullRequestId = null;
+                }
+                else if (name.equals("BRANCHNAME") && d instanceof SimpleParameterDefinition) {
+                    LOGGER.log(Level.INFO, String.format("3333333 PARAM IS BRANCHNAME SETTING VALUE TO '%s'.",sourceBranch));
+                    final SimpleParameterDefinition spd = (SimpleParameterDefinition) d;
+                    parameterValue = spd.createValue(sourceBranch);
+                    LOGGER.log(Level.INFO, String.format("3333333 PARAM VALUE TO '%s'. SUCCESS",sourceBranch));
                 }
                 else {
                     parameterValue = d.createValue(req, jo);
