@@ -119,7 +119,6 @@ public class BuildCommand extends AbstractCommand {
 
         final List<Action> actions = new ArrayList<Action>();
         String sourceBranch = "";
-
         if (teamBuildPayload.BuildVariables != null) {
             contributeTeamBuildParameterActions(teamBuildPayload.BuildVariables, actions);
         }
@@ -163,7 +162,6 @@ public class BuildCommand extends AbstractCommand {
                 commitId = args.commit;
                 pullRequestId = Integer.toString(args.pullRequestId, 10);
                 sourceBranch = args.sourceBranch;
-
                 final Action action = new PullRequestParameterAction(args);
                 actions.add(action);
                 final String message = event.getMessage().getText();
