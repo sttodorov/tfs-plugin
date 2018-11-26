@@ -42,7 +42,8 @@ public class TeamPullRequestMergedDetailsAction implements Action, Serializable 
         this.collectionUri = collectionUri;
     }
 
-    public TeamPullRequestMergedDetailsAction(final GitPullRequestEx gitPullRequest, final String message, final String detailedMessage, final String collectionUri, final String sourceBranch) {
+    public TeamPullRequestMergedDetailsAction(final GitPullRequestEx gitPullRequest, final String message, final String detailedMessage, final String collectionUri,
+     final String sourceBranch) {
         this(gitPullRequest,message,detailedMessage,collectionUri);
         this.sourceBranch = sourceBranch;    
     }
