@@ -85,9 +85,7 @@ public class GitPullRequestMergedEvent extends GitPushEvent {
 
     static String determineSourceBranch(final GitPullRequest gitPullRequest) {
         // In the form of ref/heads/master
-        final String sourceRefName = gitPullRequest.getSourceRefName();
-        String[] items = sourceRefName.split("/");
-        return items[items.length - 1];
+        return gitPullRequest.getSourceRefName();
     }
 
     @Override
