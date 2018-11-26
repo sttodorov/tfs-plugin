@@ -122,7 +122,7 @@ public class GitPullRequestMergedEvent extends GitPushEvent {
         args.repoUri = repoUri;
         args.projectId = projectId;
         args.repoId = repoId;
-        args.commit = null;
+        args.commit = commit;
         args.pushedBy = pushedBy;
         args.pullRequestId = pullRequestId;
         args.targetBranch = targetBranch;
