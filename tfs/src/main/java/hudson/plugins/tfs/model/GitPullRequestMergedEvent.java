@@ -13,6 +13,7 @@ import hudson.plugins.tfs.util.ResourceHelper;
 import hudson.plugins.tfs.TeamPullRequestMergedDetailsAction;
 import net.sf.json.JSONObject;
 
+import java.lang.StringBuilder;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
@@ -91,7 +92,18 @@ public class GitPullRequestMergedEvent extends GitPushEvent {
         int n=items.length-2;
         String[] newArray=new String[n];
         System.arraycopy(items,2,newArray,0,n);
-        return String.join("/",newArray); 
+        return myJoin(newArray,"/"); 
+    }
+
+    static String myJoin(String[] arr, String separator) {
+        if (null == arr || 0 == arr.length) return "";
+
+        StringBuilder sb = new StringBuilder(256);
+        sb.append(arr[0]);
+
+        for (int i = 1; i < arr.length; i++) sb.append(separator).append(arr[i]);
+
+        return sb.toString();
     }
 
     @Override
