@@ -72,7 +72,7 @@ public class GitPullRequestMergedEvent extends GitPushEvent {
     yielding `eef717f`.
      */
     static String determineMergeCommit(final GitPullRequest gitPullRequest) {
-        final GitCommitRef lastMergeCommit = gitPullRequest.getLastMergeCommit();
+        final GitCommitRef lastMergeCommit = gitPullRequest.getLastMergeSourceCommit();
         final String result = lastMergeCommit.getCommitId();
         return result;
     }
